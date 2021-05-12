@@ -1,0 +1,42 @@
+# Notes / Steps for Play Local automation
+
+Open Play Local https://www.playlocal.com/
+Click Sign in
+Type email
+Type password
+Click Sign in
+Type Zip Code
+Select Date
+Click Find Courts
+Select Time
+Click Reserve 
+# Prefer a different court option may come into play
+Click  I accept the terms of service and cancellation policy for this facility.
+Click Confirm
+Click "Skip this step" - could also just send them all to brandon haha
+Check for "Thanks for reserving a game!"
+# May need to use the backspace button to go back and select multipe 
+
+
+        puts "Loading URL"
+		    driver.navigate.to("https://www.playlocal.com/")
+        
+# pick up here later
+
+		    # start login process by entering username
+		    puts "Entering username"
+		    driver.find_element(:name, "username").send_keys("tester@crossbrowsertesting.com")
+
+		    # then we'll enter the password
+		    puts "Entering password"
+		    driver.find_element(:name, "password").send_keys("test123")
+
+		    # then we'll click the login button
+		    puts "Logging in"
+		    driver.find_element(:css, "div.form-actions > button").click
+
+		    # let's wait here to ensure that the page is fully loaded before we move forward
+		    wait = Selenium::WebDriver::Wait.new(:timout => 10)
+		    wait.until {
+		    	driver.find_element(:xpath, "//*[@id=\"logged-in-message\"]/h2")
+		    }
